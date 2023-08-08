@@ -1,0 +1,73 @@
+CREATE DATABASE mental;
+
+CREATE TABLE users (
+  ID INT(11) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  username VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  created_at DATETIME(0) NOT NULL,
+  PRIMARY KEY (ID),
+  UNIQUE KEY username (username),
+  UNIQUE KEY email (email)
+);
+
+CREATE TABLE posts (
+  ID INT(11) NOT NULL AUTO_INCREMENT,
+  content TEXT NOT NULL,
+  is_private TINYINT(1) NOT NULL DEFAULT 1,
+  created_at DATETIME(0) NOT NULL,
+  updated_at DATETIME(0),
+  user_id INT(11) NOT NULL,
+  PRIMARY KEY (ID),
+  FOREIGN KEY (user_id) REFERENCES users (ID) ON DELETE CASCADE
+);
+
+CREATE TABLE saved_posts (
+  ID INT(11) NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  post_id INT(11) NOT NULL,
+  user_id INT(11) NOT NULL,
+  created_at DATETIME(0) NOT NULL,
+  updated_at DATETIME(0),
+  PRIMARY KEY (ID),
+  FOREIGN KEY (user_id) REFERENCES users (ID) ON DELETE CASCADE,
+  FOREIGN KEY (post_id) REFERENCES posts (ID) ON DELETE CASCADE
+);
+
+CREATE TABLE poems (
+  ID INT(11) NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  content TEXT,
+  created_at DATETIME(0) NOT NULL,
+  updated_at DATETIME(0),
+  user_id INT(11) NOT NULL,
+  PRIMARY KEY (ID),
+  FOREIGN KEY (user_id) REFERENCES users (ID) ON DELETE CASCADE
+);
+
+CREATE TABLE feelings (
+  ID INT(11) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  rank INT(11) NOT NULL,
+  PRIMARY KEY (ID)
+);
+
+CREATE TABLE environments (
+  ID INT(11) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  PRIMARY KEY (ID)
+);
+
+CREATE TABLE logs (
+  ID INT(11) NOT NULL AUTO_INCREMENT,
+  user_id INT(11) NOT NULL,
+  feeling_id INT(11) NOT NULL,
+  environment_id INT(11) NOT NULL,
+  created_at DATETIME(0) NOT NULL,
+  updated_at DATETIME(0),
+  PRIMARY KEY (ID),
+  FOREIGN KEY (user_id) REFERENCES users (ID) ON DELETE CASCADE,
+  FOREIGN KEY (environment_id) REFERENCES feelings (ID),
+  FOREIGN KEY (feeling_id) REFERENCES feelings (ID)
+);
