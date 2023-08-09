@@ -83,7 +83,7 @@ Status: 200 OK
 content-type: application/json
 
 { 
-  "token": <JWT_TOKEN>, 
+  "token": "<JWT_TOKEN>", 
   "email": "jane.doe@gmail.com",
   "password": "123"
 }
@@ -112,7 +112,6 @@ content-type: application/json
     "name": "terrible",
     "rank": 2
   },
-  ...
 ]
 ```
 
@@ -139,7 +138,6 @@ content-type: application/json
     "ID": 2,
     "name": "outdoors"
   },
-  ...
 ]
 ```
 
@@ -165,8 +163,8 @@ content-type: application/json
 Authorization: Bearer <JWT_TOKEN>
 
 {
-  "feeling": <FEELING_ID>, 
-  "environment": <ENVIRONMENT_ID>
+  "feeling": "<FEELING_ID>", 
+  "environment": "<ENVIRONMENT_ID>"
 }
 ```
 
