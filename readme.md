@@ -1,17 +1,29 @@
 # Mood Minder API
 
-[Mood Minder's](https://github.com/mhanki/Mood-Minder) Node.js based API.
+![Node.js](https://img.shields.io/static/v1?message=Node.js&logo=Node.js&logoColor=white&label=%20&labelColor=339933&color=339933)
+![Express](https://img.shields.io/static/v1?message=Express&logo=Express&logoColor=white&label=%20&labelColor=black&color=black)
+![MySQL](https://img.shields.io/static/v1?message=MySQL&logo=MySQL&logoColor=white&label=%20&labelColor=4479A1&color=4479A1)
+
+Node.js API server for [Mood Minder](https://github.com/mhanki/Mood-Minder).
+
+## Table of contents
+- [Installation](#installation)
+- [Endpoints](#endpoints)
+- [Examples](#request-examples)
+- [Contributing](#contributing)
+- [Licence](#license)
 
 ## Installation
 
 1. Clone the repository: `git clone https://github.com/mhanki/Mood-Minder-API.git`
 2. Install the dependencies: `npm install`
-3. Setup the database by running SQL commands
-4. Configure access if needed
+3. Set up a MySQL database. You can find the schema in the [`schema.sql`](./schema.sql) file.
+4. Optionally populate the database with the feelings and environments data found in [`seed.sql`](./seed.sql).
+5. Configure your connection details in [`db.js`](./src/db.js) if needed.
 
 ## Usage
 
-To start the API server, run the following command:
+To start the API server, run:
 
 ```bash
 npm start
@@ -20,8 +32,6 @@ npm start
 By default, the server will run on port 8000. You can access the API at http://localhost:8000.
 
 ## Endpoints
-
-The following endpoints are available:
 
 **Users & Auth**  
 - `POST /users`: Create a new user.  
@@ -48,7 +58,7 @@ The following endpoints are available:
 - `DELETE /posts/:id`: Deletes a specific post.
 
 
-### Request Examples
+## Request Examples
 
 **Register a new user**
 
@@ -206,6 +216,9 @@ Authorization: Bearer <JWT_TOKEN>
 }
 ```
 
+## Contributing
+
+Found a **bug** or have a concrete **feature request**? Open a corresponding issue through the [Issues Tab](https://github.com/mhanki/Mood-Minder-API/issues).
 
 ## License
 
