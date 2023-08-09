@@ -1,4 +1,4 @@
-CREATE DATABASE mental;
+CREATE DATABASE mood-minder;
 
 CREATE TABLE users (
   ID INT(11) NOT NULL AUTO_INCREMENT,
@@ -16,29 +16,6 @@ CREATE TABLE posts (
   ID INT(11) NOT NULL AUTO_INCREMENT,
   content TEXT NOT NULL,
   is_private TINYINT(1) NOT NULL DEFAULT 1,
-  created_at DATETIME(0) NOT NULL,
-  updated_at DATETIME(0),
-  user_id INT(11) NOT NULL,
-  PRIMARY KEY (ID),
-  FOREIGN KEY (user_id) REFERENCES users (ID) ON DELETE CASCADE
-);
-
-CREATE TABLE saved_posts (
-  ID INT(11) NOT NULL AUTO_INCREMENT,
-  title VARCHAR(255) NOT NULL,
-  post_id INT(11) NOT NULL,
-  user_id INT(11) NOT NULL,
-  created_at DATETIME(0) NOT NULL,
-  updated_at DATETIME(0),
-  PRIMARY KEY (ID),
-  FOREIGN KEY (user_id) REFERENCES users (ID) ON DELETE CASCADE,
-  FOREIGN KEY (post_id) REFERENCES posts (ID) ON DELETE CASCADE
-);
-
-CREATE TABLE poems (
-  ID INT(11) NOT NULL AUTO_INCREMENT,
-  title VARCHAR(255) NOT NULL,
-  content TEXT,
   created_at DATETIME(0) NOT NULL,
   updated_at DATETIME(0),
   user_id INT(11) NOT NULL,
@@ -71,3 +48,26 @@ CREATE TABLE logs (
   FOREIGN KEY (environment_id) REFERENCES feelings (ID),
   FOREIGN KEY (feeling_id) REFERENCES feelings (ID)
 );
+
+/* CREATE TABLE saved_posts (
+  ID INT(11) NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  post_id INT(11) NOT NULL,
+  user_id INT(11) NOT NULL,
+  created_at DATETIME(0) NOT NULL,
+  updated_at DATETIME(0),
+  PRIMARY KEY (ID),
+  FOREIGN KEY (user_id) REFERENCES users (ID) ON DELETE CASCADE,
+  FOREIGN KEY (post_id) REFERENCES posts (ID) ON DELETE CASCADE
+);
+
+CREATE TABLE poems (
+  ID INT(11) NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  content TEXT,
+  created_at DATETIME(0) NOT NULL,
+  updated_at DATETIME(0),
+  user_id INT(11) NOT NULL,
+  PRIMARY KEY (ID),
+  FOREIGN KEY (user_id) REFERENCES users (ID) ON DELETE CASCADE
+); */
