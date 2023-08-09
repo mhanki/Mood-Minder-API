@@ -24,9 +24,9 @@ app.use('/feelings', feelingController);
 app.use(tokenValidator);
 app.use('/users', usersController);
 app.use('/posts', postsController);
-app.use('/poems', poemsController);
 app.use('/logs', logsController);
-app.use('/saved-posts', savedPostsController);
+/* app.use('/poems', poemsController);
+app.use('/saved-posts', savedPostsController); */
 app.use(errorHandler);
 
 module.exports = app;
